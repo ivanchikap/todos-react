@@ -1,0 +1,10 @@
+.card {
+  &.checked {
+    background-color: lightgray;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 4px;
+  }
+}

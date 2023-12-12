@@ -1,0 +1,13 @@
+.statistic {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  &__item {
+    text-align: center;
+    font-size: 20px;
+    dd {
+      font-weight: 600;
+    }
+  }
+}
