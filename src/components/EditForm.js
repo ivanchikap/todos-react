@@ -1,13 +1,23 @@
-import {useRef} from "react";
+import {useRef, useState} from "react";
+import { useNavigate, useParams} from "react-router-dom";
+import fetchService from "../helpers/fetchService";
+import Spinner from "./Spinner";
 
-const EditForm = ({onEditTodo, onCloseEditForm}) => {
+const EditForm = () => {
+    const navigate = useNavigate();
+    const params = useParams();
     const inputRef = useRef();
     const inputRef1 = useRef();
+
+    const editHandler = async (id, title, description) => {
+        const res = await fetchService.editTodo(title, description, id);
+    }
+
     const formHandler = (e) => {
         e.preventDefault();
-        onEditTodo(inputRef.current.value, inputRef1.current.value)
+        editHandler(params.id, inputRef.current.value, inputRef1.current.value)
         e.target.reset()
-        inputRef.current.focus()
+        navigate(-1);
     }
     return (
         <div className='edit'>
@@ -17,7 +27,7 @@ const EditForm = ({onEditTodo, onCloseEditForm}) => {
                 <input className='form-control' placeholder='description' type="text" ref={inputRef1}/>
                 <button className='btn btn-success flex-shrink-0' type='submit'>edit todo</button>
             </form>
-            <button onClick={onCloseEditForm} className='btn btn-secondary'>X</button>
+            <button onClick={() => navigate(-1)} className='btn btn-secondary'>X</button>
         </div>
     );
 };

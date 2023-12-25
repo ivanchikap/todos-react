@@ -1,9 +1,9 @@
 import Todo from "./Todo";
 
-const TodosList = ({todos, onCheckbox, onEdit, onDelete}) => {
+const TodosList = ({todos, onCheckbox, onDelete}) => {
     return (
         <div className='row'>
-            {todos.map((todo) => (<Todo onDelete={onDelete} onEdit={onEdit} key={todo.id} onCheckbox={onCheckbox} todo={todo}/>))}
+            {todos.map((todo) => (<Todo onDelete={onDelete} key={todo.id} onCheckbox={onCheckbox} todo={todo}/>))}
         </div>
     );
 };
