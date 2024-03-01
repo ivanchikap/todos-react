@@ -1,0 +1,16 @@
+.card {
+  &.active {
+    background-color: slategrey;
+  }
+
+  &__actions {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    .btn {
+      min-width: 70px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "todos": [
+    {
+      "title": "todo 1 new",
+      "description": "new aaaaaaaaaaaaa",
+      "checked": false,
+      "creationDate": 1703507486546,
+      "id": 2
+    },
+    {
+      "title": "new todo 4",
+      "description": "new 44444444444444444444",
+      "checked": false,
+      "creationDate": 1703507486546,
+      "id": 3
+    },
+    {
+      "title": "todo5 title",
+      "description": "jhbfbdfsdassa",
+      "checked": false,
+      "creationDate": 1709286806107,
+      "id": 5
+    },
+    {
+      "title": "todo6 title",
+      "description": "sufgdytsfydfsdsds",
+      "checked": true,
+      "creationDate": 1709286859319,
+      "id": 6
+    },
+    {
+      "title": "to last todo title",
+      "description": "djhfuidssa",
+      "checked": true,
+      "creationDate": 1709286933525,
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "anton",
+      "email": "aa@aa.ua"
+    },
+    {
+      "name": "gandon",
+      "email": "ga@ga.ua",
+      "id": 2
+    },
+    {
+      "name": "gusak",
+      "email": "gusak@ukr.net",
+      "id": 3
+    },
+    {
+      "name": "fredyk",
+      "email": "fredyk@i.ua",
+      "id": 4
+    }
+  ]
+}
