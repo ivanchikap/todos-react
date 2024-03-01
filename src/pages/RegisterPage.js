@@ -15,7 +15,7 @@ const RegisterPage = () => {
         try {
             await api.postUser(nameRef.current.value, emailRef.current.value)
         } catch (e) {
-            setError(e.message)
+            setError(e)
         }
         if (!error) {
             toast(`You register successfully. You can log in!`)

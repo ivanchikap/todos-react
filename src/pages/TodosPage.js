@@ -18,11 +18,10 @@ const TodosPage = () => {
                 const data = await api.getTodos();
                 setTodos(data);
             } catch (e) {
-                setError(error)
+                setError(e)
             } finally {
                 setIsLoading(false)
             }
-            const data = await api.getTodos();
         }
         getTodos()
     }, [])
@@ -62,7 +61,7 @@ const TodosPage = () => {
             const res = await api.postTodo(title, description)
             setTodos((prevTodos) => [...prevTodos, res])
         } catch (e) {
-            setError(e.message)
+            setError(e)
         } finally {
             setIsLoading(false)
         }
