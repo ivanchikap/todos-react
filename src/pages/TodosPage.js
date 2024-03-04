@@ -5,11 +5,14 @@ import TodosList from "../components/TodosList";
 import Spinner from "../components/Spinner";
 import Error from "../components/Error";
 import AddForm from "../components/AddForm";
+import Filter from "../components/Filter";
+import debounce from "debounce";
 
 const TodosPage = () => {
     const [todos, setTodos] = useState([])
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [filteredTodos, setFilteredTodos] = useState([])
 
     useEffect(() => {
         const getTodos = async () => {
@@ -17,6 +20,7 @@ const TodosPage = () => {
                 setIsLoading(true);
                 const data = await api.getTodos();
                 setTodos(data);
+                setFilteredTodos(data)
             } catch (e) {
                 setError(e)
             } finally {
@@ -67,6 +71,10 @@ const TodosPage = () => {
         }
     }
 
+    const filterHandler = debounce((todosFromFilter) => {
+        setFilteredTodos(todosFromFilter)
+    }, 1000)
+
     if (error) {
         return <Error error={error}/>
     }
@@ -80,7 +88,8 @@ const TodosPage = () => {
             <h2>Todos Page!</h2>
             <Statistics todos={todos}/>
             <AddForm onAddForm={addFormHandler}/>
-            <TodosList onCheckbox={checkboxHandler} onDelete={deleteHandler} todos={todos}/>
+            <Filter todos={todos} onFilter={filterHandler}/>
+            <TodosList onCheckbox={checkboxHandler} onDelete={deleteHandler} todos={filteredTodos}/>
         </div>
     );
 };

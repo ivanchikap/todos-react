@@ -1,0 +1,12 @@
+.filter {
+  .form-control {
+    display: flex;
+    margin-top: 10px;
+  }
+  input {
+    border: none;
+    width: 100%;
+    outline: none;
+    padding: 0 8px;
+  }
+}
