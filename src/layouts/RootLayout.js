@@ -2,9 +2,13 @@ import {NavLink, Outlet, useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../context/AuthContext";
 import {toast} from "react-toastify";
+import {useDispatch, useSelector} from "react-redux";
+import {setIsAuthenticated} from "../redux/login/loginSlice";
 
 const RootLayout = () => {
-    const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext)
+    // const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext)
+    const isAuthenticated = useSelector((state) => state.login.isAuthenticated)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const logoutHandler = () => {
@@ -13,7 +17,8 @@ const RootLayout = () => {
             return
         }
         sessionStorage.setItem('logined', false)
-        setIsAuthenticated(false)
+        dispatch(setIsAuthenticated(false))
+
         toast('Logged out!')
         navigate('/', {replace: true})
     }

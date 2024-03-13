@@ -1,15 +1,21 @@
 import React, {useEffect, useRef, useState} from 'react';
 import api from "../helpers/api";
 import Error from "../components/Error";
-import { useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import {useDispatch, useSelector} from "react-redux";
+import {getUsersAsync} from "../redux/login/loginSlice";
 
 const Login = ({onLogin}) => {
     const navigate = useNavigate()
     const nameRef = useRef()
     const emailRef = useRef()
-    const [error, setError] = useState()
-    const [users, setUsers] = useState([]);
+    // const [error, setError] = useState()
+    // const [users, setUsers] = useState([]);
+
+    const dispatch = useDispatch();
+    const error = useSelector(state => state.login.error)
+    const users = useSelector(state => state.login.data)
 
     useEffect(() => {
 
@@ -20,15 +26,17 @@ const Login = ({onLogin}) => {
             toast.warning('You have already logged in. That`s why you have redirected back!')
         }
 
-        const fetchLoginData = async () => {
-            try {
-                const usersFromApi = await api.getLoginData();
-                setUsers(usersFromApi);
-            } catch (e) {
-                setError(e)
-            }
-        }
-        fetchLoginData()
+        dispatch(getUsersAsync())
+
+        // const fetchLoginData = async () => {
+        //     try {
+        //         const usersFromApi = await api.getLoginData();
+        //         setUsers(usersFromApi);
+        //     } catch (e) {
+        //         setError(e)
+        //     }
+        // }
+        // fetchLoginData()
     }, [])
 
     const formSubmit = (e) => {

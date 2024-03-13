@@ -10,14 +10,14 @@
     {
       "title": "new todo 4",
       "description": "new 44444444444444444444",
-      "checked": false,
+      "checked": true,
       "creationDate": 1703507486546,
       "id": 3
     },
     {
       "title": "todo5 title",
       "description": "jhbfbdfsdassa",
-      "checked": false,
+      "checked": true,
       "creationDate": 1709286806107,
       "id": 5
     },
